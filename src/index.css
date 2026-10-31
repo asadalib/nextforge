@@ -1,0 +1,667 @@
+/* NextForge Builder Design System & Style Core */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --brand-purple: #6366f1;
+  --brand-purple-hover: #4f46e5;
+  --canvas-bg: #eef2f6;
+  --panel-bg: #ffffff;
+  --border-light: #e2e8f0;
+}
+
+html.dark {
+  color-scheme: dark;
+  --canvas-bg: #090d16;
+  --panel-bg: #0f172a;
+  --border-light: #1e293b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+html.dark body {
+  background-color: #090d16;
+  color: #f1f5f9;
+}
+
+/* Custom Visible Scrollbars */
+.nextforge-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  overflow-y: auto !important;
+}
+
+.nextforge-scrollbar::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+  display: block !important;
+}
+.nextforge-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.nextforge-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+  border-radius: 4px !important;
+}
+.nextforge-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6366f1 !important;
+}
+
+/* Canvas Selection Outline (NextForge Style) */
+.nextforge-canvas-selected {
+  outline: 2px solid #6366f1 !important;
+  outline-offset: -2px;
+  position: relative;
+}
+
+.nextforge-canvas-selected::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -20px;
+  left: -2px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px 3px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.nextforge-canvas-hover {
+  outline: 1.5px dashed #818cf8 !important;
+  outline-offset: -1.5px;
+}
+
+/* Drag Insertion Line */
+.drag-drop-line-purple {
+  height: 3px;
+  background: #6366f1;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+  position: relative;
+}
+
+.drag-drop-line-purple::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #6366f1;
+  border-radius: 50%;
+}
+
+/* Rich Text Typography & Table Rendering */
+.nextforge-rich-text {
+  word-break: break-word;
+  width: 100%;
+}
+.nextforge-rich-text p,
+.nextforge-rich-text span,
+.nextforge-rich-text div,
+.nextforge-rich-text li,
+.nextforge-rich-text a {
+  font-weight: inherit !important;
+  text-shadow: inherit;
+  text-align: inherit;
+}
+.nextforge-rich-text[data-align="center"],
+.nextforge-rich-text[data-align="center"] p,
+.nextforge-rich-text[data-align="center"] div,
+.nextforge-rich-text[data-align="center"] h1,
+.nextforge-rich-text[data-align="center"] h2,
+.nextforge-rich-text[data-align="center"] h3,
+.nextforge-rich-text[data-align="center"] h4,
+.nextforge-rich-text[data-align="center"] blockquote {
+  text-align: center !important;
+}
+.nextforge-rich-text[data-align="right"],
+.nextforge-rich-text[data-align="right"] p,
+.nextforge-rich-text[data-align="right"] div,
+.nextforge-rich-text[data-align="right"] h1,
+.nextforge-rich-text[data-align="right"] h2,
+.nextforge-rich-text[data-align="right"] h3,
+.nextforge-rich-text[data-align="right"] h4,
+.nextforge-rich-text[data-align="right"] blockquote {
+  text-align: right !important;
+}
+.nextforge-rich-text[data-align="justify"],
+.nextforge-rich-text[data-align="justify"] p,
+.nextforge-rich-text[data-align="justify"] div,
+.nextforge-rich-text[data-align="justify"] h1,
+.nextforge-rich-text[data-align="justify"] h2,
+.nextforge-rich-text[data-align="justify"] h3,
+.nextforge-rich-text[data-align="justify"] h4,
+.nextforge-rich-text[data-align="justify"] blockquote {
+  text-align: justify !important;
+}
+.nextforge-rich-text[data-align="left"],
+.nextforge-rich-text[data-align="left"] p,
+.nextforge-rich-text[data-align="left"] div,
+.nextforge-rich-text[data-align="left"] h1,
+.nextforge-rich-text[data-align="left"] h2,
+.nextforge-rich-text[data-align="left"] h3,
+.nextforge-rich-text[data-align="left"] h4,
+.nextforge-rich-text[data-align="left"] blockquote {
+  text-align: left !important;
+}
+.nextforge-rich-text strong,
+.nextforge-rich-text b {
+  font-weight: 700 !important;
+}
+.nextforge-rich-text p {
+  margin: 0.5em 0;
+}
+.nextforge-rich-text p:first-child {
+  margin-top: 0;
+}
+.nextforge-rich-text p:last-child {
+  margin-bottom: 0;
+}
+.nextforge-rich-text h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0.8em 0 0.4em;
+  line-height: 1.25;
+}
+.nextforge-rich-text h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.8em 0 0.4em;
+  line-height: 1.3;
+}
+.nextforge-rich-text h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.6em 0 0.3em;
+}
+.nextforge-rich-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5em 0 0.25em;
+}
+.nextforge-rich-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9em;
+}
+.nextforge-rich-text th,
+.nextforge-rich-text td {
+  border: 1px solid #cbd5e1;
+  padding: 8px 12px;
+  min-width: 40px;
+}
+.nextforge-rich-text th {
+  background-color: #f8fafc;
+  font-weight: 600;
+}
+.nextforge-rich-text blockquote {
+  border-left: 4px solid #6366f1;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #64748b;
+  font-style: italic;
+}
+.nextforge-rich-text pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+  margin: 0.75em 0;
+}
+.nextforge-rich-text code {
+  background: #f1f5f9;
+  color: #e11d48;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: monospace;
+}
+.nextforge-rich-text ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+.nextforge-rich-text ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+.nextforge-rich-text hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 1.5rem 0;
+}
+.nextforge-rich-text a {
+  color: #6366f1;
+  text-decoration: underline;
+}
+.nextforge-rich-text img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fluid responsive media & typography helpers */
+.nextforge-canvas-mobile h1,
+.nextforge-canvas-mobile h2 {
+  font-size: clamp(22px, 6vw, 32px) !important;
+  line-height: 1.25 !important;
+}
+
+.nextforge-canvas-mobile p,
+.nextforge-canvas-mobile span {
+  word-break: break-word;
+}
+
+.nextforge-canvas-tablet h1,
+.nextforge-canvas-tablet h2 {
+  font-size: clamp(28px, 5vw, 38px) !important;
+}
+
+/* Autopilot responsive image sizing */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   NextForge Advanced Carousel & Slider Slide Transition Effects
+   ========================================================================== */
+
+@keyframes nfSlideHorizontal {
+  from {
+    opacity: 0;
+    transform: translateX(45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.nf-slide-slide-horizontal {
+  animation: nfSlideHorizontal var(--slide-duration, 500ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideVertical {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nf-slide-slide-vertical {
+  animation: nfSlideVertical var(--slide-duration, 500ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.nf-slide-fade {
+  animation: nfSlideFade var(--slide-duration, 500ms) ease-in-out forwards;
+}
+
+@keyframes nfSlideZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.nf-slide-zoom-in {
+  animation: nfSlideZoomIn var(--slide-duration, 500ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideZoomOut {
+  from {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.nf-slide-zoom-out {
+  animation: nfSlideZoomOut var(--slide-duration, 500ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideFlipH {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-35deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg) scale(1);
+  }
+}
+.nf-slide-flip-horizontal {
+  animation: nfSlideFlipH var(--slide-duration, 600ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideFlipV {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(35deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) scale(1);
+  }
+}
+.nf-slide-flip-vertical {
+  animation: nfSlideFlipV var(--slide-duration, 600ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideBlurFade {
+  from {
+    opacity: 0;
+    filter: blur(14px);
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
+  }
+}
+.nf-slide-blur-fade {
+  animation: nfSlideBlurFade var(--slide-duration, 600ms) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes nfSlideRotateFade {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+.nf-slide-rotate-fade {
+  animation: nfSlideRotateFade var(--slide-duration, 500ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideKenBurns {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.1) translate(-1.5%, -1%);
+  }
+}
+.nf-slide-ken-burns {
+  animation: nfSlideKenBurns var(--slide-interval-or-duration, 5s) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes nfSlideBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.72) translateY(35px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.nf-slide-bounce {
+  animation: nfSlideBounce var(--slide-duration, 650ms) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes nfSlideCurtain {
+  from {
+    opacity: 0;
+    clip-path: inset(0 50% 0 50%);
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0% 0 0%);
+    transform: scale(1);
+  }
+}
+.nf-slide-curtain {
+  animation: nfSlideCurtain var(--slide-duration, 600ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nfSlideSwing {
+  0% {
+    opacity: 0;
+    transform: perspective(700px) rotateX(-50deg);
+    transform-origin: top center;
+  }
+  65% {
+    transform: perspective(700px) rotateX(12deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(700px) rotateX(0deg);
+    transform-origin: top center;
+  }
+}
+.nf-slide-swing {
+  animation: nfSlideSwing var(--slide-duration, 650ms) ease-out forwards;
+}
+
+@keyframes nfSlideDriftFade {
+  from {
+    opacity: 0;
+    transform: translateX(25px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+.nf-slide-slide-fade {
+  animation: nfSlideDriftFade var(--slide-duration, 450ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ========================================================================= */
+/* NEXTFORGE DARK THEME SYSTEM                                               */
+/* ========================================================================= */
+
+/* Dark mode scrollbars */
+html.dark .nextforge-scrollbar {
+  scrollbar-color: #334155 transparent !important;
+}
+html.dark .nextforge-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html.dark .nextforge-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155 !important;
+}
+html.dark .nextforge-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6366f1 !important;
+}
+
+/* Dark Canvas Workspace Backdrop */
+html.dark #canvas-scroll-container {
+  background-color: #0b0f19 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+}
+
+/* Dark Editor Header & Sidebars */
+html.dark header {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+html.dark aside {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* Dark Inspector & Sidebar Cards */
+html.dark aside .bg-white,
+html.dark aside .bg-slate-50,
+html.dark aside .bg-slate-50\/70,
+html.dark aside .bg-slate-50\/80,
+html.dark aside .bg-slate-50\/50,
+html.dark aside .bg-slate-50\/40,
+html.dark aside .bg-slate-50\/60,
+html.dark aside .bg-slate-100,
+html.dark aside .bg-slate-100\/80,
+html.dark aside .bg-slate-100\/70,
+html.dark aside .bg-\[\#edf2f7\] {
+  background-color: #1e293b !important;
+}
+
+html.dark aside .border-slate-200,
+html.dark aside .border-slate-200\/80,
+html.dark aside .border-slate-200\/90,
+html.dark aside .border-slate-200\/60,
+html.dark aside .border-slate-200\/70,
+html.dark aside .border-slate-300,
+html.dark aside .border-slate-100 {
+  border-color: #334155 !important;
+}
+
+/* Dark Text Colors in Panels */
+html.dark aside .text-slate-900,
+html.dark aside .text-slate-800,
+html.dark aside .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+html.dark aside .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+html.dark aside .text-slate-500 {
+  color: #94a3b8 !important;
+}
+html.dark aside .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Dark Inputs, Textareas, and Selects in Sidebar/Inspector */
+html.dark aside input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
+html.dark aside select,
+html.dark aside textarea {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+html.dark aside input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):focus,
+html.dark aside select:focus,
+html.dark aside textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 1px #6366f1 !important;
+}
+
+/* Dark Steppers and Quick Chips */
+html.dark aside button.bg-white,
+html.dark aside button.bg-slate-50 {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+html.dark aside button.bg-white:hover,
+html.dark aside button.bg-slate-50:hover {
+  background-color: #27354f !important;
+  color: #ffffff !important;
+}
+
+/* Dark Floating Layers Panel */
+html.dark .fixed.top-16.left-\[295px\] {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+html.dark .fixed.top-16.left-\[295px\] .bg-slate-50 {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #94a3b8 !important;
+}
+html.dark .fixed.top-16.left-\[295px\] .bg-white {
+  background-color: #141c2e !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Dark Modals Container */
+html.dark .animate-scale-in {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+html.dark .animate-scale-in .bg-slate-50,
+html.dark .animate-scale-in .bg-slate-50\/70,
+html.dark .animate-scale-in .bg-slate-50\/50,
+html.dark .animate-scale-in .bg-slate-100 {
+  background-color: #141c2e !important;
+  border-color: #1e293b !important;
+}
+html.dark .animate-scale-in .text-slate-800,
+html.dark .animate-scale-in .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+html.dark .animate-scale-in .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+html.dark .animate-scale-in .text-slate-500 {
+  color: #94a3b8 !important;
+}
+html.dark .animate-scale-in input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]) {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+
